@@ -4,6 +4,14 @@ inputs:
   token:
     description: 'The token to use to access the GitHub API'
     required: true
+  target_folder:
+    description: 'The Folder in which all assets are available'
+    required: true
+    default: src/assets
+  thrashold_size:
+    description: 'The max. allowed file size'
+    required: true
+    default: 100
 runs:
   using: 'node16'
   main: 'dist/index.js'

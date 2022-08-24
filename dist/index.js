@@ -13275,6 +13275,8 @@ const main = async () => {
 
     const inputs = {
       token: core.getInput("token"),
+      target_folder: core.getInput("target_folder"),
+      thrashold_size: core.getInput("thrashold_size")
     };
 
     const {
@@ -13307,7 +13309,7 @@ const main = async () => {
       }
     };
 
-    await exec.exec(`find ./src/assets/ -type f  ! -regex  '.*\(png\|gif\|jpg\|svg\|jpeg\)$' -size +100k -exec ls -lh {} \;`, null, options); 
+    await exec.exec(`find ${target_folder} -type f  ! -regex  '.*\(png\|gif\|jpg\|svg\|jpeg\)$' -size +${thrashold_size}k -exec ls -lh {} \;`, null, options); 
     const arrayOutput = myOutput.split("\n");
     const count = arrayOutput.length -1;
 
