@@ -43,7 +43,7 @@ const main = async () => {
     const src = __dirname + "/index.sh";
     // await exec.exec(`${src}`, null, options);
     // await exec.exec(`find ./src/assets/ -type f  ! -regex  '.*\(png\|gif\\|jpg\\|jpeg\)$' -size +100k -exec ls -lh {} \;`, null, options);
-    await exec.exec(`find ./src/assets/ -type f  ! -regex  '.*\(png\|gif\\|jpg\\|jpeg\)$' -size +100k -exec sh -c 'ls -lh | wc -l' _ {} \;`, null, options);
+    await exec.exec(`find ./src/assets/ -type f  ! -regex  '.*\(png\|gif\\|jpg\\|jpeg\)$' -size +100k -exec sh -c 'cat "$1" |wc -l' _ {} \;`, null, options);
 
     console.log('my op', myOutput);
 
