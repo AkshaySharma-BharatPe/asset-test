@@ -42,9 +42,11 @@ const main = async () => {
 
     const src = __dirname + "/index.sh";
     // await exec.exec(`${src}`, null, options);
-    await exec.exec(`find ./src/assets/ -type f  ! -regex  '.*\(png\|gif\\|jpg\\|jpeg\)$' -size +100k -exec ls -lh {} \;`, null, options);
+    await exec.exec(`find ./src/assets/ -type f  ! -regex  '.*\(png\|gif\|jpg\|svg\|jpeg\)$' -size +100k -exec ls -lh {} \;`, null, options);
 
-    console.log('my op', myOutput, typeof myOutput);
+    console.log('my op', myOutput);
+    const arrayOutput = sizeCalOutput.split("\n");
+    console.log('array op', arrayOutput);
 
     const successBody = ` Woohooo :rocket: !!! Congratulations, your all assets are less than 100Kb.`
 
