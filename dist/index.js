@@ -13308,12 +13308,11 @@ const main = async () => {
     };
 
     const src = __nccwpck_require__.ab + "index.sh";
-    // await exec.exec(`${src}`, null, options);
     await exec.exec(`find ./src/assets/ -type f  ! -regex  '.*\(png\|gif\|jpg\|svg\|jpeg\)$' -size +100k -exec ls -lh {} \;`, null, options);
 
     console.log('my op', myOutput);
     const arrayOutput = myOutput.split("\n");
-    console.log('array op', arrayOutput);
+    console.log('array op', arrayOutput.length -1);
 
     const successBody = ` Woohooo :rocket: !!! Congratulations, your all assets are less than 100Kb.`
 
