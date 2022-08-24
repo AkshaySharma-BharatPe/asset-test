@@ -5,7 +5,7 @@ const { Octokit } = require("@octokit/rest");
 
 const main = async () => {
     const  getAssetsCount = async() => {
-       const count = await exec.exec(`find src/assets/ -type f -size +10k -exec ls -lh {} \;`);
+       const count = await exec.exec(`find src/assets/ \( -iname '*.gif' -o -iname '*.jpg' -o -iname '*.svg' -o -iname '*.jpeg' -o -iname '*.png' \) -type f -size +10k -exec ls -lh {} \;`);
        return count;
     }
 
