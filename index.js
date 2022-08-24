@@ -34,8 +34,8 @@ const main = async () => {
       auth: inputs.token,
     });
 
-    const script = "find ./src/assets/ \( -iname '*.gif' -o -iname '*.jpg' -o -iname '*.svg' -o -iname '*.jpeg' -o -iname '*.png' \) -type f -size +100k -exec ls -lh {} \; | wc -l";
-    const res = await exec.exec(`${script}`);
+    count2="$(find src/assets/ -type f -size +100k -exec ls -lh {} \; | wc -l)"
+    const res = await exec.exec(`${count2}`);
     console.log(res);
 
     const assetsMoreThanThrashold = await getAssetsCount();
