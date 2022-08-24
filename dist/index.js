@@ -13276,6 +13276,10 @@ const main = async () => {
         token: core.getInput("token"),
     };
 
+    const {
+        payload: { pull_request: pullRequest, repository },
+      } = github.context;
+
     if (!pullRequest) {
         core.error("This action only works on pull_request events");
         return;
