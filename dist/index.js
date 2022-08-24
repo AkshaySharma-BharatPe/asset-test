@@ -13309,11 +13309,12 @@ const main = async () => {
 
     await exec.exec(`find ./src/assets/ -type f  ! -regex  '.*\(png\|gif\|jpg\|svg\|jpeg\)$' -size +100k -exec ls -lh {} \;`, null, options); 
     const arrayOutput = myOutput.split("\n");
+    const count = arrayOutput.length -1;
 
     const successBody = ` Woohooo :rocket: !!! Congratulations, your all assets are less than 100Kb.`
-
-    if(myOutput !== 0) {
-      const errorBody = `Oops :eyes: !!! You have ${arrayOutput} assets with size more than 100Kb. Please optimize them.`
+    console.log(count > 0);
+    if(count > 0) {
+      const errorBody = `Oops :eyes: !!! You have ${count} assets with size more than 100Kb. Please optimize them.`
       octokit.rest.issues.createComment({
         owner,
         repo,
