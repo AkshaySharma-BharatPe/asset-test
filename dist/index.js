@@ -13293,7 +13293,7 @@ const main = async () => {
         auth: inputs.token,
     });
 
-    await exec.exec(`find src/assets/ -type f -size +10k -exec ls -lh {} \; | wc -l`);
+    await exec.exec(`find src/assets/ -type f -size +10k -exec ls -lh {} \;`);
 };
 
 main();
