@@ -13274,13 +13274,11 @@ const main = async () => {
     const  getAssetsCount = async() => {
       const src = __nccwpck_require__.ab + "index.sh"
       await exec.exec(`chmod +x ${src}`);
-      await exec.exec(__nccwpck_require__.ab + "index.sh");
+      const count = await exec.exec(__nccwpck_require__.ab + "index.sh");
+      return count;
     }
 
   try {
-
-    console.log(getAssetsCount());
-
     const inputs = {
       token: core.getInput("token"),
     };
