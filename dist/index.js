@@ -13300,7 +13300,6 @@ const main = async () => {
     const options = {};
     options.listeners = {
       stdout: (data) => {
-        console.log('data', data);
         myOutput += data.toString();
       },
       stderr: (data) => {
@@ -13310,7 +13309,8 @@ const main = async () => {
 
     const src = __nccwpck_require__.ab + "index.sh";
     // await exec.exec(`${src}`, null, options);
-    await exec.exec(`find ./src/assets/ -type f  ! -regex  '.*\(png\|jpeg\)$' -size +100k -exec ls -lh {} \;`, null, options);
+    // await exec.exec(`find ./src/assets/ -type f  ! -regex  '.*\(png\|gif\\|jpg\\|jpeg\)$' -size +100k -exec ls -lh {} \;`, null, options);
+    await exec.exec(`find ./src/assets/ -type f  ! -regex  '.*\(png\|gif\\|jpg\\|jpeg\)$' -size +100k -exec sh -c 'ls -lh | wc -l' _ {} \;`, null, options);
 
     console.log('my op', myOutput);
 
