@@ -4,7 +4,7 @@ const exec = require("@actions/exec");
 const { Octokit } = require("@octokit/rest");
 
 const main = async () => {
-    const  getAssetsCount = async() => {
+    const getAssetsCount = async() => {
       const src = __dirname + "/index.sh"
       await exec.exec(`chmod +x ${src}`);
       const count = await exec.exec(`${src}`);
@@ -12,6 +12,7 @@ const main = async () => {
     }
 
   try {
+
     const inputs = {
       token: core.getInput("token"),
     };
@@ -33,10 +34,13 @@ const main = async () => {
       auth: inputs.token,
     });
 
-    const errorBody = `Oops :eyes: !!! You have assets with size more than 100Kb. Please optimize them.`
-    const successBody = ` Woohooo :rocket: !!! Congratulations, your all assets are less than 100Kb.`
+    await exec.exec(`find ./src/assets/ \( -iname '*.gif' -o -iname '*.jpg' -o -iname '*.svg' -o -iname '*.jpeg' -o -iname '*.png' \) -type f -size +100k -exec ls -lh {} | wc -l \;`);
 
     const assetsMoreThanThrashold = getAssetsCount();
+
+    const errorBody = `Oops :eyes: !!! You have ${assetsMoreThanThrashold} assets with size more than 100Kb. Please optimize them.`
+    const successBody = ` Woohooo :rocket: !!! Congratulations, your all assets are less than 100Kb.`
+
 
     if(assetsMoreThanThrashold !== 0) {
       octokit.rest.issues.createComment({
