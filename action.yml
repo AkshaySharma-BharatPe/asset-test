@@ -5,5 +5,5 @@ inputs:
     description: 'The token to use to access the GitHub API'
     required: true
 runs:
-  using: 'shell'
+  using: 'docker'
   main: 'index.sh'
