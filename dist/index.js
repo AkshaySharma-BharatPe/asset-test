@@ -13312,7 +13312,7 @@ const main = async () => {
     await exec.exec(`find ./src/assets/ -type f  ! -regex  '.*\(png\|gif\|jpg\|svg\|jpeg\)$' -size +100k -exec ls -lh {} \;`, null, options);
 
     console.log('my op', myOutput);
-    const arrayOutput = sizeCalOutput.split("\n");
+    const arrayOutput = myOutput.split("\n");
     console.log('array op', arrayOutput);
 
     const successBody = ` Woohooo :rocket: !!! Congratulations, your all assets are less than 100Kb.`
