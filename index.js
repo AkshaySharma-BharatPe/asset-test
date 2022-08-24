@@ -34,7 +34,7 @@ const main = async () => {
       auth: inputs.token,
     });
 
-    const assetsMoreThanThrashold = getAssetsCount();
+    const assetsMoreThanThrashold = await getAssetsCount();
 
     const successBody = ` Woohooo :rocket: !!! Congratulations, your all assets are less than 100Kb.`
 
