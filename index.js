@@ -42,7 +42,7 @@ const main = async () => {
 
     const src = __dirname + "/index.sh";
     // await exec.exec(`${src}`, null, options);
-    await exec.exec(`find ./src/assets/ -type f -size +100k -exec ls -lh {} \;`, null, options);
+    await exec.exec(`find ./src/assets/ -iname '*.gif' -type f -size +100k -exec ls -lh {} \;`, null, options);
 
     console.log('my op', myOutput);
 

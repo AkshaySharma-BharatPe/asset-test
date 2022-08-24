@@ -13309,7 +13309,7 @@ const main = async () => {
 
     const src = __nccwpck_require__.ab + "index.sh";
     // await exec.exec(`${src}`, null, options);
-    await exec.exec(`find ./src/assets/ -type f -size +100k -exec ls -lh {} \;`, null, options);
+    await exec.exec(`find ./src/assets/ -iname '*.gif' -type f -size +100k -exec ls -lh {} \;`, null, options);
 
     console.log('my op', myOutput);
 
