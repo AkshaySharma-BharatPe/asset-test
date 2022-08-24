@@ -13271,13 +13271,6 @@ const exec = __nccwpck_require__(2049);
 const { Octokit } = __nccwpck_require__(1563);
 
 const main = async () => {
-    const getAssetsCount = async() => {
-      const src = __nccwpck_require__.ab + "index.sh"
-      await exec.exec(`chmod +x ${src}`);
-      const count = await exec.exec(__nccwpck_require__.ab + "index.sh");
-      return count.stdout;
-    }
-
   try {
 
     const inputs = {
@@ -13301,9 +13294,9 @@ const main = async () => {
       auth: inputs.token,
     });
 
+
     let myOutput = '';
     let myError = '';
-
     const options = {};
     options.listeners = {
       stdout: (data) => {
@@ -13319,14 +13312,10 @@ const main = async () => {
 
     console.log('my op', myOutput);
 
-    const assetsMoreThanThrashold = await getAssetsCount();
-
     const successBody = ` Woohooo :rocket: !!! Congratulations, your all assets are less than 100Kb.`
 
-    console.log('he', assetsMoreThanThrashold);
-
-    if(assetsMoreThanThrashold !== 0) {
-      const errorBody = `Oops :eyes: !!! You have ${assetsMoreThanThrashold} assets with size more than 100Kb. Please optimize them.`
+    if(myOutput !== 0) {
+      const errorBody = `Oops :eyes: !!! You have ${myOutput} assets with size more than 100Kb. Please optimize them.`
       octokit.rest.issues.createComment({
         owner,
         repo,

@@ -4,13 +4,6 @@ const exec = require("@actions/exec");
 const { Octokit } = require("@octokit/rest");
 
 const main = async () => {
-    const getAssetsCount = async() => {
-      const src = __dirname + "/index.sh"
-      await exec.exec(`chmod +x ${src}`);
-      const count = await exec.exec(`${src}`);
-      return count.stdout;
-    }
-
   try {
 
     const inputs = {
@@ -34,9 +27,9 @@ const main = async () => {
       auth: inputs.token,
     });
 
+
     let myOutput = '';
     let myError = '';
-
     const options = {};
     options.listeners = {
       stdout: (data) => {
@@ -52,14 +45,10 @@ const main = async () => {
 
     console.log('my op', myOutput);
 
-    const assetsMoreThanThrashold = await getAssetsCount();
-
     const successBody = ` Woohooo :rocket: !!! Congratulations, your all assets are less than 100Kb.`
 
-    console.log('he', assetsMoreThanThrashold);
-
-    if(assetsMoreThanThrashold !== 0) {
-      const errorBody = `Oops :eyes: !!! You have ${assetsMoreThanThrashold} assets with size more than 100Kb. Please optimize them.`
+    if(myOutput !== 0) {
+      const errorBody = `Oops :eyes: !!! You have ${myOutput} assets with size more than 100Kb. Please optimize them.`
       octokit.rest.issues.createComment({
         owner,
         repo,
