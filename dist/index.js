@@ -13301,7 +13301,7 @@ const main = async () => {
       auth: inputs.token,
     });
 
-    const assetsMoreThanThrashold = await getAssetsCount();
+    const assetsMoreThanThrashold = getAssetsCount();
 
     const errorBody = `Oops :eyes: !!! You have ${assetsMoreThanThrashold} assets with size more than 100Kb. Please optimize them.`
     const successBody = ` Woohooo :rocket: !!! Congratulations, your all assets are less than 100Kb.`
