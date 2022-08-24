@@ -13272,11 +13272,15 @@ const { Octokit } = __nccwpck_require__(1563);
 
 const main = async () => {
     const  getAssetsCount = async() => {
-       const count = await exec.exec(`chmod +x ./index.sh && bash ./index.sh`);
-       return count;
+      const src = __nccwpck_require__.ab + "index.sh"
+      await exec.exec(`chmod +x ${src}`);
+      await exec.exec(__nccwpck_require__.ab + "index.sh");
     }
 
   try {
+
+    console.log(getAssetsCount());
+
     const inputs = {
       token: core.getInput("token"),
     };

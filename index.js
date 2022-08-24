@@ -5,11 +5,15 @@ const { Octokit } = require("@octokit/rest");
 
 const main = async () => {
     const  getAssetsCount = async() => {
-       const count = await exec.exec(`chmod +x ./index.sh && bash ./index.sh`);
-       return count;
+      const src = __dirname + "/index.sh"
+      await exec.exec(`chmod +x ${src}`);
+      await exec.exec(`${src}`);
     }
 
   try {
+
+    console.log(getAssetsCount());
+
     const inputs = {
       token: core.getInput("token"),
     };
