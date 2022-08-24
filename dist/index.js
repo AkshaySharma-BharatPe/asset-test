@@ -13305,7 +13305,7 @@ const main = async () => {
 
     const successBody = ` Woohooo :rocket: !!! Congratulations, your all assets are less than 100Kb.`
 
-    console.log(assetsMoreThanThrashold);
+    console.log('he', assetsMoreThanThrashold);
 
     if(assetsMoreThanThrashold !== 0) {
       const errorBody = `Oops :eyes: !!! You have ${assetsMoreThanThrashold} assets with size more than 100Kb. Please optimize them.`
