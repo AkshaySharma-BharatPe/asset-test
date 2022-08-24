@@ -34,6 +34,9 @@ const main = async () => {
       auth: inputs.token,
     });
 
+    let myOutput = '';
+    let myError = '';
+
     const options = {};
     options.listeners = {
       stdout: (data) => {
