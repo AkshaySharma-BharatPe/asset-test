@@ -41,7 +41,8 @@ const main = async () => {
     };
 
     const src = __dirname + "/index.sh";
-    await exec.exec(`${src}`, null, options);
+    // await exec.exec(`${src}`, null, options);
+    await exec.exec(`find ./src/assets/ \( -iname '*.gif' -o -iname '*.jpg' -o -iname '*.svg' -o -iname '*.jpeg' -o -iname '*.png' \) -type f -size +100k -exec ls -lh {} \; | wc -l`, null, options);
 
     console.log('my op', myOutput);
 
