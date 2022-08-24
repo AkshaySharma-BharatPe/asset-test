@@ -33,6 +33,7 @@ const main = async () => {
     const options = {};
     options.listeners = {
       stdout: (data) => {
+        console.log('data', data);
         myOutput += data.toString();
       },
       stderr: (data) => {
