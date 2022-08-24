@@ -8,7 +8,7 @@ const main = async () => {
       const src = __dirname + "/index.sh"
       await exec.exec(`chmod +x ${src}`);
       const count = await exec.exec(`${src}`);
-      return count;
+      return count.stdout;
     }
 
   try {

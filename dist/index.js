@@ -13275,7 +13275,7 @@ const main = async () => {
       const src = __nccwpck_require__.ab + "index.sh"
       await exec.exec(`chmod +x ${src}`);
       const count = await exec.exec(__nccwpck_require__.ab + "index.sh");
-      return count;
+      return count.stdout;
     }
 
   try {
