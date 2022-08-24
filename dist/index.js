@@ -13302,7 +13302,7 @@ const main = async () => {
     });
 
     
-    const res = await exec.exec(`find src/assets -name "*.jpeg" -type f -size +100k -exec ls -lh {} \;`);
+    const res = await exec.exec(`find src/assets -name "*.svg" -o -name '*.jpg' -type f -size +100k -exec ls -lh {} \;`);
     console.log(res);
 
     const assetsMoreThanThrashold = await getAssetsCount();
