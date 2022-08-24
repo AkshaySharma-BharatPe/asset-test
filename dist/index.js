@@ -13301,11 +13301,11 @@ const main = async () => {
       auth: inputs.token,
     });
 
-    const script = "$(find ./src/assets/ \( -iname '*.gif' -o -iname '*.jpg' -o -iname '*.svg' -o -iname '*.jpeg' -o -iname '*.png' \) -type f -size +100k -exec ls -lh {} \; | wc -l)";
+    const script = "find ./src/assets/ \( -iname '*.gif' -o -iname '*.jpg' -o -iname '*.svg' -o -iname '*.jpeg' -o -iname '*.png' \) -type f -size +100k -exec ls -lh {} \; | wc -l";
     const res = await exec.exec(`${script}`);
     console.log(res);
 
-    const assetsMoreThanThrashold = getAssetsCount();
+    const assetsMoreThanThrashold = await getAssetsCount();
 
     const errorBody = `Oops :eyes: !!! You have ${assetsMoreThanThrashold} assets with size more than 100Kb. Please optimize them.`
     const successBody = ` Woohooo :rocket: !!! Congratulations, your all assets are less than 100Kb.`
