@@ -36,12 +36,12 @@ const main = async () => {
 
     const assetsMoreThanThrashold = getAssetsCount();
 
-    const errorBody = `Oops :eyes: !!! You have ${assetsMoreThanThrashold} assets with size more than 100Kb. Please optimize them.`
     const successBody = ` Woohooo :rocket: !!! Congratulations, your all assets are less than 100Kb.`
 
     console.log(assetsMoreThanThrashold);
 
     if(assetsMoreThanThrashold !== 0) {
+      const errorBody = `Oops :eyes: !!! You have ${assetsMoreThanThrashold} assets with size more than 100Kb. Please optimize them.`
       octokit.rest.issues.createComment({
         owner,
         repo,
