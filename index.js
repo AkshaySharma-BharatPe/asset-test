@@ -38,8 +38,8 @@ const main = async () => {
 
     const assetsMoreThanThrashold = getAssetsCount();
 
-    console.log(assetsMoreThanThrashold);
-    
+    console.log(assetsMoreThanThrashold > 0);
+
     if(assetsMoreThanThrashold > 0) {
       octokit.rest.issues.createComment({
         owner,
