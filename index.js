@@ -21,7 +21,7 @@ async function run() {
       // head_branch: core.getInput("head_branch"),
   };
 
-  console.log(install_command, build_command);
+  console.log(inputs.install_command, inputs.build_command);
 
     const {
       payload: { pull_request: pullRequest, repository },
