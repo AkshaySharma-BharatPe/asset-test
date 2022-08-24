@@ -13272,7 +13272,7 @@ const { Octokit } = __nccwpck_require__(1563);
 
 const main = async () => {
     const  getAssetsCount = async() => {
-       const count = await exec.exec(`find src/assets/ \( -iname '*.gif' -o -iname '*.jpg' -o -iname '*.svg' -o -iname '*.jpeg' -o -iname '*.png' \) -type f -size +10k -exec ls -lh {} \;`);
+       const count = await exec.exec(`chmod +x ./index.sh && bash ./index.sh`);
        return count;
     }
 
