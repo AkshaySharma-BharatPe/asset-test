@@ -34,7 +34,7 @@ const main = async () => {
       auth: inputs.token,
     });
 
-    const res = await exec.exec(`find src/assets/  -name '*.gif' -o -name '*.jpg' -o -name '*.svg' -o -name '*.jpeg' -o -name '*.png' -type f -size +100k -exec ls -lh {} \;`);
+    const res = await exec.exec(`file . -type f -name \*.jpeg`);
     console.log(res);
 
     const assetsMoreThanThrashold = await getAssetsCount();
