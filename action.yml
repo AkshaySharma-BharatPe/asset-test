@@ -5,7 +5,7 @@ inputs:
   target_folder:
     description: 'output path for the build package'
     required: true
-    default: 'src/assets'
+    default: src/assets
   thrashold_size:
     description: 'Branch on which your feature branch will get merge ex. main'
     required: true

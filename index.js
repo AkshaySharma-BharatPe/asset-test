@@ -42,14 +42,14 @@ const main = async () => {
       }
     };
 
-    await exec.exec(`find ${target_folder} -type f  ! -regex  '.*\(png\|gif\|jpg\|svg\|jpeg\)$' -size +${thrashold_size}k -exec ls -lh {} \;`, null, options); 
+    await exec.exec(`find ${inputs.target_folder} -type f  ! -regex  '.*\(png\|gif\|jpg\|svg\|jpeg\)$' -size +${inputs.thrashold_size}k -exec ls -lh {} \;`, null, options); 
     const arrayOutput = myOutput.split("\n");
     const count = arrayOutput.length -1;
 
     const successBody = ` Woohooo :rocket: !!! Congratulations, your all assets are less than 100Kb.`
     console.log(count > 0);
     if(count > 0) {
-      const errorBody = `Oops :eyes: !!! You have ${count} assets with size more than 100Kb. Please optimize them.`
+      const errorBody = `Oops :eyes: !!! You have ${count} assets with size more than ${inputs.thrashold_size}Kb. Please optimize them.`
       octokit.rest.issues.createComment({
         owner,
         repo,
