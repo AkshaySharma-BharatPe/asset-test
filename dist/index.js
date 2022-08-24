@@ -32628,12 +32628,14 @@ async function run() {
   try {
     const inputs = {
       token: core.getInput("token"),
-      install_command: core.getInput("install_command"),
-      build_command: core.getInput("build_command"),
-      build_path: core.getInput("build_path"),
-      base_branch: core.getInput("base_branch"),
-      head_branch: core.getInput("head_branch"),
+      install_command: core.getInput("target_folder"),
+      build_command: core.getInput("target_folder"),
+      // build_path: core.getInput("build_path"),
+      // base_branch: core.getInput("base_branch"),
+      // head_branch: core.getInput("head_branch"),
   };
+
+  console.log(install_command, build_command);
 
     const {
       payload: { pull_request: pullRequest, repository },
