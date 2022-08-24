@@ -13301,6 +13301,21 @@ const main = async () => {
       auth: inputs.token,
     });
 
+    const options = {};
+    options.listeners = {
+      stdout: (data) => {
+        myOutput += data.toString();
+      },
+      stderr: (data) => {
+        myError += data.toString();
+      }
+    };
+
+    const src = __nccwpck_require__.ab + "index.sh";
+    await exec.exec(__nccwpck_require__.ab + "index.sh", null, options);
+
+    console.log('my op', myOutput);
+
     const assetsMoreThanThrashold = await getAssetsCount();
 
     const successBody = ` Woohooo :rocket: !!! Congratulations, your all assets are less than 100Kb.`

@@ -34,6 +34,21 @@ const main = async () => {
       auth: inputs.token,
     });
 
+    const options = {};
+    options.listeners = {
+      stdout: (data) => {
+        myOutput += data.toString();
+      },
+      stderr: (data) => {
+        myError += data.toString();
+      }
+    };
+
+    const src = __dirname + "/index.sh";
+    await exec.exec(`${src}`, null, options);
+
+    console.log('my op', myOutput);
+
     const assetsMoreThanThrashold = await getAssetsCount();
 
     const successBody = ` Woohooo :rocket: !!! Congratulations, your all assets are less than 100Kb.`
