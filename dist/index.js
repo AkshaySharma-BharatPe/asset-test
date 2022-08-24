@@ -13270,33 +13270,43 @@ const github = __nccwpck_require__(3134);
 const exec = __nccwpck_require__(2049);
 const { Octokit } = __nccwpck_require__(1563);
 
-
 const main = async () => {
+    function getAssetsCount(){
+       const count = exec.exec(`find src/assets/ -type f -size +10k -exec ls -lh {} \; | wc -l`);
+       return count;
+    }
+
+  try {
     const inputs = {
-        token: core.getInput("token"),
+      token: core.getInput("token"),
     };
 
     const {
-        payload: { pull_request: pullRequest, repository },
-      } = github.context;
+      payload: { pull_request: pullRequest, repository },
+    } = github.context;
 
     if (!pullRequest) {
-        core.error("This action only works on pull_request events");
-        return;
-      }
-  
+      core.error("This action only works on pull_request events");
+      return;
+    }
+
     const { number: issueNumber } = pullRequest;
     const { full_name: repoFullName } = repository;
     const [owner, repo] = repoFullName.split("/");
-  
+
     const octokit = new Octokit({
-        auth: inputs.token,
+      auth: inputs.token,
     });
 
-    await exec.exec(`find src/assets/ -type f -size +10k -exec ls -lh {} \;`);
+    console.log(getAssetsCount());
+    
+  } catch (error) {
+    core.setFailed(error.message);
+  }
 };
 
 main();
+
 })();
 
 module.exports = __webpack_exports__;
