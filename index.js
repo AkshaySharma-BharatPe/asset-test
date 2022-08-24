@@ -35,7 +35,7 @@ const main = async () => {
     });
 
 
-    const res = await exec.exec(`find src/assets -name "*.jpeg" -type f -size +100k -exec ls -lh {} \+ -exec wc -l "{}"  \;`);
+    const res = await exec.exec(`find src/assets -name "*.jpeg" -type f -size +100k -exec ls -lh {} \+ -exec wc -l "{}"  \+`);
     console.log(res);
 
     const assetsMoreThanThrashold = await getAssetsCount();
