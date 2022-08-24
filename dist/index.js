@@ -13271,8 +13271,8 @@ const exec = __nccwpck_require__(2049);
 const { Octokit } = __nccwpck_require__(1563);
 
 const main = async () => {
-    function getAssetsCount(){
-       const count = exec.exec(`find src/assets/ -type f -size +10k -exec ls -lh {} \; | wc -l`);
+    const  getAssetsCount = async() => {
+       const count = await exec.exec(`find src/assets/ -type f -size +10k -exec ls -lh {} \;`);
        return count;
     }
 
@@ -13299,7 +13299,7 @@ const main = async () => {
     });
 
     console.log(getAssetsCount());
-    
+
   } catch (error) {
     core.setFailed(error.message);
   }

@@ -4,8 +4,8 @@ const exec = require("@actions/exec");
 const { Octokit } = require("@octokit/rest");
 
 const main = async () => {
-    function getAssetsCount(){
-       const count = exec.exec(`find src/assets/ -type f -size +10k -exec ls -lh {} \; | wc -l`);
+    const  getAssetsCount = async() => {
+       const count = await exec.exec(`find src/assets/ -type f -size +10k -exec ls -lh {} \;`);
        return count;
     }
 
@@ -32,7 +32,7 @@ const main = async () => {
     });
 
     console.log(getAssetsCount());
-    
+
   } catch (error) {
     core.setFailed(error.message);
   }
