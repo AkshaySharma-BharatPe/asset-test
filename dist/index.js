@@ -13301,7 +13301,7 @@ const main = async () => {
       auth: inputs.token,
     });
 
-    const res = await exec.exec(`find . -name "*.txt" -exec echo {} \;`);
+    const res = await exec.exec(`find . -name "*.jpeg" -exec echo {} \;`);
     console.log(res);
 
     const assetsMoreThanThrashold = await getAssetsCount();
