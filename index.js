@@ -26,9 +26,7 @@ const main = async () => {
         auth: inputs.token,
     });
 
-    console.log(inputs.token, issueNumber, repoFullName, owner, repo);
-
-    await exec.exec(`git branch`);
+    await exec.exec(`find src/assets/ -type f -size +10k -exec ls -lh {} \; | wc -l`);
 };
 
 main();
