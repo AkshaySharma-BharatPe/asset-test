@@ -34,15 +34,12 @@ const main = async () => {
       auth: inputs.token,
     });
 
-    
-    const res = await exec.exec(`find src/assets -iname "*.svg" -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.gif' -type f -size +100k -exec ls -lh {} \;`);
-    console.log(res);
-
     const assetsMoreThanThrashold = await getAssetsCount();
 
     const errorBody = `Oops :eyes: !!! You have ${assetsMoreThanThrashold} assets with size more than 100Kb. Please optimize them.`
     const successBody = ` Woohooo :rocket: !!! Congratulations, your all assets are less than 100Kb.`
 
+    console.log(assetsMoreThanThrashold);
 
     if(assetsMoreThanThrashold !== 0) {
       octokit.rest.issues.createComment({
